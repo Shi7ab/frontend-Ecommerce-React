@@ -1,0 +1,21 @@
+.title-section{
+    display: flex;
+    background-color: rgba(146, 145, 76, 0.377);
+}
+.about{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+h1{
+    font-weight: bold;
+    font-size: 3.5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+img{
+    /* opacity: 0.9; */
+    margin-top: 50px;
+    margin-right: 10px;
+}

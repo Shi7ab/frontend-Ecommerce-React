@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.val {
+    margin-left: 20px;
+    border: 1px solid;
+    width: 40px;
+    border-radius: 6px;
+    padding-left: 3px;
+    color: red;
+}
+.btn {
+    border: 1px solid #1909;
+}
+.btn:hover{
+    background-color:blue;
+    color: #fff;
+}

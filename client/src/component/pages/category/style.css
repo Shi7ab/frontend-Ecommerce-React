@@ -1,0 +1,122 @@
+/* صفحة كاملة */
+.category-page {
+  display: flex;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9fafb;
+}
+
+/* Sidebar */
+.category-sidebar {
+  width: 240px;
+  background: #1e293b;
+  color: white;
+  padding: 1.5rem;
+  border-right: 2px solid #334155;
+}
+
+.category-sidebar h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #475569;
+  padding-bottom: 0.5rem;
+}
+
+.category-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.category-sidebar li {
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.category-sidebar li:hover {
+  background: #334155;
+}
+
+.category-sidebar li.active {
+  background: #0ea5e9;
+  font-weight: bold;
+}
+
+/* Products Section */
+.product-section {
+  flex: 1;
+  padding: 2rem;
+}
+
+.product-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+}
+
+/* Products Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Product Card */
+.product-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 1rem;
+}
+
+.product-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.product-info .desc {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+
+.product-info .price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0ea5e9;
+  margin-bottom: 0.8rem;
+}
+
+.btn {
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #0284c7;
+}
