@@ -25,7 +25,7 @@ function Profile({username}) {
       try{
   
         // const response = await axios.get('http://localhost:5000/api/v1/user/689fee957ec7f712b3fa9350')
-        const response = await axios.get(`http://localhost:5000/api/v1/user/${sessionStorage.getItem('userId')}`);
+        const response = await axios.get(`https://backend-ecommerce-nodejs-production.up.railway.app/api/v1/user/${sessionStorage.getItem('userId')}`);
         const user = response.data;
         setUser(user);
 

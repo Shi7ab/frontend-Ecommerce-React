@@ -29,7 +29,7 @@ function Users() {
 
     try {
       const token = sessionStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/v1/admin/users/${selectedUser._id}`, {
+      await axios.delete(`https://backend-ecommerce-nodejs-production.up.railway.app/api/v1/admin/users/${selectedUser._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(users.filter((u) => u._id !== selectedUser._id));
@@ -44,7 +44,7 @@ function Users() {
     try {
       const token = sessionStorage.getItem("token");
       const res = await axios.put(
-        `http://localhost:5000/api/v1/admin/users/${id}`,
+        `https://backend-ecommerce-nodejs-production.up.railway.app/api/v1/admin/users/${id}`,
         { role },
         { headers: { Authorization: `Bearer ${token}` } }
       );

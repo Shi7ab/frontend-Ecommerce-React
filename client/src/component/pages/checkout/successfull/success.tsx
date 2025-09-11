@@ -12,7 +12,7 @@ const Success = () => {
     const [createdAt, setCreatedAt] = useState('');
    const fetchOrderDetails = async () => {
     try {
-        const res = await axios.get("http://localhost:5000/api/v1/order", {
+        const res = await axios.get("https://backend-ecommerce-nodejs-production.up.railway.app/api/v1/order", {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
         }

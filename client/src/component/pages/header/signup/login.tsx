@@ -13,7 +13,7 @@ function Login() {
     const email = usernameRe.current?.value || '';
     const password = passwordRe.current?.value || '';
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/auth/login', { email, password });
+      const response = await axios.post('https://backend-ecommerce-nodejs-production.up.railway.app/api/v1/auth/login', { email, password });
       if (response.status !== 200 && response.status !== 201) {
         throw new Error('Failed to login');
       } else {

@@ -10,12 +10,12 @@ import './product.css'
 function Products() {
 
   // const [products, setproducts] = useState(PRODUCT)
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState<any[]>([]);
  
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/v1/products');
+      const response = await axios.get('https://backend-ecommerce-nodejs-production.up.railway.app/api/v1/products');
       setProducts(response.data.products);
       console.log(response.data);
     } catch (error) {

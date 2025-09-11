@@ -39,7 +39,7 @@ function Signup() {
   };
 
   const handleGoogleLogin = () => {
-     window.location.href = 'http://localhost:5000/api/v1/auth/google';
+     window.location.href = 'https://backend-ecommerce-nodejs-production.up.railway.app/api/v1/auth/google';
      
   };
 

@@ -15,7 +15,7 @@ const ForgetPassword = () => {
       return;
     }
     try {
-      await axios.post('http://localhost:5000/api/v1/auth/forgot-password', { email });
+      await axios.post('https://backend-ecommerce-nodejs-production.up.railway.app/api/v1/auth/forgot-password', { email });
       setOtpSent(true);
       toast.success('OTP sent to your email!');
     } catch (error) {

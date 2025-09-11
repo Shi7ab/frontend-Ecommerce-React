@@ -57,7 +57,7 @@ const Payment = () => {
   const handleConfirmPay = async () => {
     setShowModal(false);
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/order/', {
+      const response = await axios.post('https://backend-ecommerce-nodejs-production.up.railway.app/api/v1/order/', {
         creditNumber: card,
         Amount: Amount,
         expiryDate: expiry,
