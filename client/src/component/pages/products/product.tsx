@@ -3,8 +3,22 @@ import { cartcontext } from '../../context/contextProvider';
 import './product.css'
 
 
-function Product({product}) {   
-     const { dispatch } = useContext(cartcontext); 
+interface ProductProps {
+    product: {
+        image: string;
+        name: string;
+        descripe: string;
+        price: number;
+        // add other fields if needed
+    };
+}
+
+function Product({ product }: ProductProps) {   
+    const cartCtx = useContext(cartcontext);
+    if (!cartCtx) {
+        throw new Error("cartcontext is null. Make sure your component is wrapped in the context provider.");
+    }
+    const { dispatch } = cartCtx;
     //   console.log(cart);
       
     return (

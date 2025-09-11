@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import icon from '../../../assets/c.png';
-import moon from '../../../assets/moon.png';
 import prson from '../../../assets/pr.png';
 import './nav.css';
 import { cartcontext } from '../../context/contextProvider';
 import { useContext } from 'react';
 
 function Navbar() {
-  const { cart } = useContext(cartcontext);
+  const cartContextValue = useContext(cartcontext);
+  const cart = cartContextValue?.cart || [];
   // const token = localStorage.getItem("token");
     const token = sessionStorage.getItem("token");
   return (

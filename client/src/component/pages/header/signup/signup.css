@@ -54,7 +54,8 @@
             transition: background 0.2s;
             margin-top: 0.5rem;
             &:hover{
-                background: linear-gradient(90deg, #4b3af7 60%, #0056b3 100%);
+                background: linear-gradient(90deg, #4b3af7, #6c63ff);
+
             }
         }
      .google-btn {

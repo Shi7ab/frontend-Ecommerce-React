@@ -1,50 +1,59 @@
-import React from 'react';
-import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-const Success = () => {
-    const [orderId, setOrderId] = useState('');
-    const [expiryDate, setExpiryDate] = useState('');
-    const [Amount, setAmount] = useState('');
-    const [creditNumber, setCreditNumber] = useState('');
-    const [createdAt, setCreatedAt] = useState('');
-   const fetchOrderDetails = async () => {
+// تعريف نوع الطلب
+interface Order {
+  _id: string;
+  Amount: number;
+  expiryDate: string;
+  creditNumber: string;
+  createdAt: string;
+}
+
+const Success: React.FC = () => {
+  const [order, setOrder] = useState<Order | null>(null);
+
+  const fetchOrderDetails = async () => {
     try {
-        const res = await axios.get("https://backend-ecommerce-nodejs-production.up.railway.app/api/v1/order", {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
+      const res = await axios.get<Order[]>(
+        "https://backend-ecommerce-nodejs-production.up.railway.app/api/v1/order",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
-        });
+      );
 
-        // Assuming backend returns an array of orders
-        if (res.data.length > 0) {
-        const order = res.data._id;
-        console.log(order);
-
-        setOrderId(order._id);
-        setAmount(order.Amount);
-        setExpiryDate(order.expiryDate);
-        setCreditNumber(order.creditNumber);
-        setCreatedAt(order.createdAt);
-        } else {
+      if (res.data.length > 0) {
+        // هنا بناخد آخر طلب
+        const latestOrder = res.data[res.data.length - 1];
+        setOrder(latestOrder);
+      } else {
         console.log("No orders found");
-        }
+      }
     } catch (error) {
-        console.error("Error fetching order details:", error);
+      console.error("Error fetching order details:", error);
     }
-    };
+  };
 
-    useEffect(() => {
-        fetchOrderDetails();
-    }, []);
+  useEffect(() => {
+    fetchOrderDetails();
+  }, []);
+
   return (
     <div className="success-container">
       <div className="success-icon">
-        {/* Animated checkmark SVG */}
         <svg viewBox="0 0 52 52">
-          <circle cx="26" cy="26" r="25" fill="none" stroke="#28a745" strokeWidth="2"/>
+          <circle
+            cx="26"
+            cy="26"
+            r="25"
+            fill="none"
+            stroke="#28a745"
+            strokeWidth="2"
+          />
           <path
             fill="none"
             stroke="#28a745"
@@ -57,31 +66,35 @@ const Success = () => {
       </div>
       <h2>Payment Successful!</h2>
       <p>
-        Thank you for your purchase. Your payment has been processed and your order is confirmed.
+        Thank you for your purchase. Your payment has been processed and your
+        order is confirmed.
       </p>
       <Link to="/">Go to Home</Link>
-      <div className="success-details">
-        <div>
-          <span className="label">Order ID:</span>
-          <span className="value">{orderId}</span>
-        </div>
-        <div>
-          <span className="label">Amount:</span>
-          <span className="value">${Amount}</span>
-        <div>
+
+      {order && (
+        <div className="success-details">
+          <div>
+            <span className="label">Order ID:</span>
+            <span className="value">{order._id}</span>
+          </div>
+          <div>
+            <span className="label">Amount:</span>
+            <span className="value">${order.Amount}</span>
+          </div>
+          <div>
             <span className="label">Credit Card:</span>
-            <span className="value">{creditNumber}</span>
+            <span className="value">{order.creditNumber}</span>
+          </div>
+          <div>
+            <span className="label">Expiry Date:</span>
+            <span className="value">{order.expiryDate}</span>
+          </div>
+          <div>
+            <span className="label">Created At:</span>
+            <span className="value">{new Date(order.createdAt).toLocaleString()}</span>
+          </div>
         </div>
-        </div>
-        <div>
-          <span className="label">Date:</span>
-          <span className="value">{expiryDate}</span>
-        </div>
-           <div>
-          <span className="label">createdAt:</span>
-          <span className="value">{createdAt}</span>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

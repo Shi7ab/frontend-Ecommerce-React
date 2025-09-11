@@ -3,7 +3,6 @@ import {  useState,useEffect } from 'react';
 import  Navbar from './nav/navbar';
 import Baner from './baner/baner';
 import Products from './products/products';
-import Cart from './header/cartItem/cart';
 import CollectionSection from './Section/section';
 import Footer from './header//footer/Footer';
 import axios from 'axios';
@@ -11,7 +10,6 @@ import axios from 'axios';
 
 
 function Home() {
-   const [show, setShow] = useState(false);
    const [pagnation, setpagnation] = useState(1)
 
   const fetchProducts = async () => {

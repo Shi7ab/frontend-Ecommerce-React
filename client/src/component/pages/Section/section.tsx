@@ -1,4 +1,3 @@
-import React from 'react';
 import './section.css';
 import collectionImage from '../../../assets/template images/banner-image.png';
 

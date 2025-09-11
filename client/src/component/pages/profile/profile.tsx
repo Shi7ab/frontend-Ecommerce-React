@@ -1,13 +1,19 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import Navbar from '../nav/navbar';
 import axios from 'axios';
 import { cartcontext } from '../../context/contextProvider';
+
+ 
 import './style.css';
 
-function Profile({username}) {
+interface ProfileProps {}
+
+const Profile: React.FC<ProfileProps> = () => {
+  const location = useLocation();
   // Example user data (replace with real data from context or API)
-  const { cart } = useContext(cartcontext);
+  const cartContext = useContext(cartcontext);
+  const cart = cartContext ? cartContext.cart : [];
   const [user, setUser] = React.useState({
     name: "",
     email: "",
@@ -103,7 +109,7 @@ function Profile({username}) {
           <div className="profile-info">
            <h2>Hello, {user.name}</h2>
             <p className="profile-email">{user.email}</p>
-            <Link className="profile-link" to="/forgetPassword">forget password?</Link>
+            <Link className="profile-link" to="/forgetPassword">Forget password?</Link>
           </div>
           <div className="profile-data">
             <div className="profile-stat">
